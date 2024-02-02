@@ -1,0 +1,107 @@
+@import url("https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .admin-nav-item {
+    @apply hover:bg-white hover:text-blue-700 hover:rounded-md hover:cursor-pointer p-2 text-white;
+  }
+
+  .section-content {
+    @apply flex flex-col items-center px-10 pt-14 pb-7;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.active {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.outlet {
+  width: 100%;
+}
+
+.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.admin-panel-content {
+  padding: 1.25rem;
+}
+
+.fade-in-image {
+  opacity: 0;
+  animation-name: fadeIn;
+  animation-duration: 6s;
+  animation-fill-mode: forwards;
+  animation-delay: 7s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .outlet {
+    width: calc(100% - 275px);
+  }
+
+  .admin-panel-content {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+/* width */
+::-webkit-scrollbar {
+  height: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track:horizontal {
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+  background: #c7c1c1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb:horizontal {
+  border-radius: 10px;
+  background: #c7c1c1;
+}
+
+::-webkit-scrollbar-thumb:vertical:hover {
+  background: #a39f9f;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:horizontal:hover {
+  background: #a39f9f;
+}
