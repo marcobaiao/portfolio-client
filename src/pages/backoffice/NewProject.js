@@ -10,7 +10,8 @@ import FileInput from "../../components/common/inputs/FileInput";
 import Button from "../../components/common/Button";
 import ImagesList from "../../components/common/ImagesList";
 import ImageItem from "../../components/common/ImageItem";
-import Editor from "../../components/common/Editor";
+//import Editor from "../../components/common/Editor";
+import Editor from "../../components/common/DraftEditor";
 import { fetchProjectCategories } from "../../services/projectCategoriesService";
 import { createProject } from "../../services/projectsService";
 import {
@@ -19,6 +20,8 @@ import {
   schemaValidation,
 } from "../../utils";
 import { projectSchema } from "../../joi-schemas";
+import draftToHtml from "draftjs-to-html";
+import { EditorState } from "draft-js";
 
 function NewProject() {
   const [name, setName] = useState("");
@@ -26,6 +29,7 @@ function NewProject() {
   const [technologies, setTechnologies] = useState(null);
   const [thumbnailImg, setThumbnailImg] = useState(null);
   const [images, setImages] = useState([]);
+  const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const [description, setDescription] = useState("");
 
   const [projectCategoriesOptions, setProjectCategoriesOptions] =
@@ -67,7 +71,7 @@ function NewProject() {
       technologies,
       thumbnailImg,
       images,
-      description,
+      description: draftToHtml(description),
     });
   }
 
@@ -87,7 +91,7 @@ function NewProject() {
       formData.append("images", image);
     });
 
-    formData.append("description", description);
+    formData.append("description", draftToHtml(description));
 
     return formData;
   }
@@ -216,7 +220,13 @@ function NewProject() {
           <div className="mb-5">
             <FormLabel text="Description" />
 
-            <Editor initialValue="" onSetContent={setDescription} />
+            {/*<Editor initialValue="" onSetContent={setDescription} />*/}
+
+            <Editor
+              editorState={editorState}
+              onEditorStateChange={(editorState) => setEditorState(editorState)}
+              onContentStateChange={(content) => setDescription(content)}
+            />
           </div>
         </form>
       </div>

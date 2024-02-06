@@ -11,7 +11,9 @@ import TextInput from "../../components/common/inputs/TextInput";
 import FileInput from "../../components/common/inputs/FileInput";
 import FormLabel from "../../components/common/FormLabel";
 import Button from "../../components/common/Button";
-import Editor from "../../components/common/Editor";
+//import Editor from "../../components/common/Editor";
+import Editor from "../../components/common/DraftEditor";
+import { ContentState, EditorState } from "draft-js";
 import { fetchPostCategories } from "../../services/postCategoriesService";
 import { fetchPost, updatePost } from "../../services/postsService";
 import {
@@ -21,6 +23,8 @@ import {
 } from "../../utils";
 import { postSchema } from "../../joi-schemas";
 import ImageItem from "../../components/common/ImageItem";
+import htmlToDraft from "html-to-draftjs";
+import draftToHtml from "draftjs-to-html";
 
 function EditPost() {
   const params = useParams();
@@ -33,6 +37,8 @@ function EditPost() {
   const [newCategories, setNewCategories] = useState(null);
   const [newThumbnailImg, setNewThumbnailImg] = useState(null);
   const [newContent, setNewContent] = useState(null);
+
+  const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
   const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
 
@@ -76,7 +82,7 @@ function EditPost() {
       description: newDescription || post.description,
       categories: newCategories || post.categories,
       thumbnailImg: newThumbnailImg || post.thumbnailImg,
-      content: newContent || post.content,
+      content: draftToHtml(newContent) || post.content,
     });
   }
 
@@ -93,7 +99,7 @@ function EditPost() {
     }
 
     if (newThumbnailImg) formData.append("thumbnailImg", newThumbnailImg);
-    if (newContent) formData.append("content", newContent);
+    if (newContent) formData.append("content", draftToHtml(newContent));
 
     return formData;
   }
@@ -157,6 +163,14 @@ function EditPost() {
     function () {
       fetchPost(params.id).then((res) => {
         if (res.status === "success") {
+          const html = res.data.post.content;
+          const contentBlock = htmlToDraft(html);
+          const contentState = ContentState.createFromBlockArray(
+            contentBlock.contentBlocks
+          );
+          const editorState = EditorState.createWithContent(contentState);
+          setEditorState(editorState);
+
           setPost(res.data.post);
         }
       });
@@ -282,7 +296,13 @@ function EditPost() {
 
           <div>
             <FormLabel text="Content" />
-            <Editor initialValue={post.content} onSetContent={setNewContent} />
+            {/*<Editor initialValue={post.content} onSetContent={setNewContent} />*/}
+
+            <Editor
+              editorState={editorState}
+              onEditorStateChange={(editorState) => setEditorState(editorState)}
+              onContentStateChange={(content) => setNewContent(content)}
+            />
           </div>
         </form>
       </div>

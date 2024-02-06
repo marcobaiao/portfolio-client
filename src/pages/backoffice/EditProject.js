@@ -13,7 +13,8 @@ import ImagesList from "../../components/common/ImagesList";
 import ImageItem from "../../components/common/ImageItem";
 import FormLabel from "../../components/common/FormLabel";
 import Button from "../../components/common/Button";
-import Editor from "../../components/common/Editor";
+//import Editor from "../../components/common/Editor";
+import Editor from "../../components/common/DraftEditor";
 import { fetchProjectCategories } from "../../services/projectCategoriesService";
 import { fetchProject, updateProject } from "../../services/projectsService";
 import {
@@ -22,6 +23,9 @@ import {
   schemaValidation,
 } from "../../utils";
 import { projectSchema } from "../../joi-schemas";
+import { ContentState, EditorState } from "draft-js";
+import htmlToDraft from "html-to-draftjs";
+import draftToHtml from "draftjs-to-html";
 
 function EditProject() {
   const [project, setProject] = useState(null);
@@ -33,6 +37,7 @@ function EditProject() {
   const [newImages, setNewImages] = useState([]);
   const [imagesToKeep, setImagesToKeep] = useState(null);
   const [newContent, setNewContent] = useState(null);
+  const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
   const [projectCategoriesOptions, setProjectCategoriesOptions] =
     useState(null);
@@ -112,7 +117,7 @@ function EditProject() {
       thumbnailImg: newThumbnailImg || project.thumbnailImg,
       technologies: newCategories || project.categories,
       images: [...newImages, ...imagesToKeep],
-      description: newContent || project.description,
+      description: draftToHtml(newContent) || project.description,
     });
   }
 
@@ -139,7 +144,7 @@ function EditProject() {
       });
     }
 
-    if (newContent) formData.append("description", newContent);
+    if (newContent) formData.append("description", draftToHtml(newContent));
 
     return formData;
   }
@@ -177,6 +182,15 @@ function EditProject() {
     function () {
       fetchProject(params.projectId).then((res) => {
         if (res.status === "success") {
+          const html = res.data.project.description;
+          const contentBlock = htmlToDraft(html);
+          console.log(contentBlock);
+          const contentState = ContentState.createFromBlockArray(
+            contentBlock.contentBlocks
+          );
+          const editorState = EditorState.createWithContent(contentState);
+          setEditorState(editorState);
+
           setProject(res.data.project);
           setImagesToKeep(res.data.project.images);
         } else if (res.code === 0) {
@@ -346,9 +360,15 @@ function EditProject() {
 
           <div className="mb-5">
             <FormLabel text="Description" />
-            <Editor
+            {/*<Editor
               initialValue={project.description}
               onSetContent={setNewContent}
+              />*/}
+
+            <Editor
+              editorState={editorState}
+              onEditorStateChange={(editorState) => setEditorState(editorState)}
+              onContentStateChange={(content) => setNewContent(content)}
             />
           </div>
         </form>

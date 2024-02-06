@@ -8,7 +8,9 @@ import TextInput from "../../components/common/inputs/TextInput";
 import FileInput from "../../components/common/inputs/FileInput";
 import FormLabel from "../../components/common/FormLabel";
 import ImageItem from "../../components/common/ImageItem";
-import Editor from "../../components/common/Editor";
+//import Editor from "../../components/common/Editor";
+import Editor from "../../components/common/DraftEditor";
+import { EditorState } from "draft-js";
 import Button from "../../components/common/Button";
 import { postSchema } from "../../joi-schemas";
 import { fetchPostCategories } from "../../services/postCategoriesService";
@@ -18,13 +20,16 @@ import {
   renderErrorsAlertBox,
   schemaValidation,
 } from "../../utils";
+import draftToHtml from "draftjs-to-html";
 
 function NewPost() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [thumbnailImg, setThumbnailImg] = useState(null);
   const [categories, setCategories] = useState([]);
+  const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const [content, setContent] = useState("");
+
   const [postCategoriesOptions, setPostCategoriesOptions] = useState([]);
   const [errors, setErrors] = useState(null);
 
@@ -47,7 +52,7 @@ function NewPost() {
       description,
       thumbnailImg,
       categories,
-      content,
+      content: draftToHtml(content),
     });
   }
 
@@ -61,7 +66,7 @@ function NewPost() {
     categories.forEach((category) => {
       formData.append("categories", category.id);
     });
-    formData.append("content", content);
+    formData.append("content", draftToHtml(content));
 
     return formData;
   }
@@ -177,7 +182,13 @@ function NewPost() {
 
           <div>
             <FormLabel text="Content" />
-            <Editor initialValue="" onSetContent={setContent} />
+            {/*<Editor initialValue="" onSetContent={setContent} />*/}
+
+            <Editor
+              editorState={editorState}
+              onEditorStateChange={(editorState) => setEditorState(editorState)}
+              onContentStateChange={(content) => setContent(content)}
+            />
           </div>
         </form>
       </div>
