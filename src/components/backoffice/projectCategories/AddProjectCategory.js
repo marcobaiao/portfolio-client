@@ -51,8 +51,8 @@ function AddProjectCategory({ onCloseModal, onConfirm, onCancel }) {
 
         <div className="flex justify-end">
           <Button
-            color="red-700"
-            hoverColor="red-800"
+            color="red-600"
+            hoverColor="red-700"
             onClick={handleCancel}
             className="mr-2"
           >

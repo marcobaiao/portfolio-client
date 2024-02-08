@@ -11,7 +11,7 @@ function AboutDescription({ description }) {
 
       <div className="mt-10 w-full flex justify-center gap-2 fade-in-image">
         <a
-          href="https://www.linkedin.com/in/marco-silva-728b731b5/"
+          href="https://www.linkedin.com/in/marco-bai%C3%A3o-728b731b5/"
           target="__blank"
           title="Check my Linkedin"
         >

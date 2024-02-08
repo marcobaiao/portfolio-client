@@ -24,7 +24,7 @@ function ImageItem({
               : URL.createObjectURL(image)
           }
           alt="me"
-          className="w-full h-full rounded-sm object-cover"
+          className={`w-full h-full rounded-sm object-cover`}
         />
         {remove && (
           <FontAwesomeIcon

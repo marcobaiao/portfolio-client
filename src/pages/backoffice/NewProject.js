@@ -191,8 +191,8 @@ function NewProject() {
 
             <ImageItem
               image={thumbnailImg}
-              height="20"
-              width="28"
+              height="24"
+              width="20"
               className="mb-3"
               remove={false}
             />

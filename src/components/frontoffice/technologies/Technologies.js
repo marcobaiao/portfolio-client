@@ -41,16 +41,16 @@ function Technologies() {
       <SectionTitle title="Technologies" />
 
       <div className="flex flex-col items-center">
-        <h3 className="font-heading mb-10 text-[2rem] lg:text-[2.3rem]">
-          Solid knowledge
+        <h3 className="font-heading mb-10 text-[2rem] lg:text-[2.3rem] text-center">
+          The ones i've used the most
         </h3>
 
         <TechnologiesList images={solidKnowledgeImages} />
       </div>
 
       <div className="mt-14">
-        <h3 className="font-heading mb-10 text-[2rem] lg:text-[2.3rem]">
-          Used but would like to explore further
+        <h3 className="font-heading mb-10 text-[2rem] lg:text-[2.3rem] text-center">
+          The ones i've used but would like to explore further
         </h3>
 
         <TechnologiesList images={exploreFurtherImages} />

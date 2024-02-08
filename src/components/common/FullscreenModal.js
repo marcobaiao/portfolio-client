@@ -24,7 +24,7 @@ function FullscreenModal({
       <div className="relative flex justify-between items-center text-xl mb-5 font-semibold h-80 w-full sm:w-11/12 md:w-9/12 lg:w-8/12 lg:h-96 xl:h-[26rem] 2xl:h-[32rem] 3xl:h-[36rem]">
         <FontAwesomeIcon
           icon={faAngleLeft}
-          className="absolute left-2 text-5xl text-white cursor-pointer"
+          className="absolute -left-1 xl:-left-16 text-5xl text-gray-400 cursor-pointer"
           onClick={onPrevious}
         />
         <img
@@ -34,7 +34,7 @@ function FullscreenModal({
         />
         <FontAwesomeIcon
           icon={faAngleRight}
-          className="absolute text-5xl text-white right-2 cursor-pointer"
+          className="absolute text-5xl text-gray-400 -right-1 xl:-right-16 cursor-pointer"
           onClick={onNext}
         />
       </div>

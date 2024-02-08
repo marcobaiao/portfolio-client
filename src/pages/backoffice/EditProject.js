@@ -312,6 +312,8 @@ function EditProject() {
                   remove={false}
                   existingImage={!newThumbnailImg}
                   folder="projects"
+                  height="24"
+                  width="20"
                 />
 
                 <RewindIcon
@@ -330,7 +332,7 @@ function EditProject() {
 
           <div className="mb-5">
             <FormLabel text="Images" />
-            <div className="flex items-center mb-5 gap-2">
+            <div className="flex flex-wrap items-center mb-5 gap-2">
               <ImagesList
                 images={imagesToKeep}
                 onImgRemove={handleProjectImgDelete}

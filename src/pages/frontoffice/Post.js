@@ -26,7 +26,7 @@ function Post() {
   if (!post) return <Spinner />;
 
   return (
-    <section className="flex flex-col items-center px-10 py-7 sm:max-w-2xl xl:max-w-3xl mx-auto">
+    <section className="flex flex-col items-center px-10 pt-7 pb-14 sm:max-w-2xl xl:max-w-3xl mx-auto">
       <SectionTitle title={post.title} textAlign="left" marginBottom="5" />
 
       <p className="text-left w-full text-lg text-gray-700">

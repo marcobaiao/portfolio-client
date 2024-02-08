@@ -53,8 +53,8 @@ function EditPostCategory({
         <div className="flex justify-end">
           <Button
             onClick={onCancel}
-            color="red-700"
-            hoverColor="red-800"
+            color="red-600"
+            hoverColor="red-700"
             className="mr-2"
           >
             Cancel

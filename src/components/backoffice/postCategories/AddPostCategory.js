@@ -50,8 +50,8 @@ function AddPostCategory({ onCloseModal, onConfirm, onCancel }) {
         <div className="flex justify-end">
           <Button
             onClick={handleCancel}
-            color="red-700"
-            hoverColor="red-800"
+            color="red-600"
+            hoverColor="red-700"
             className="mr-2"
           >
             Cancel
