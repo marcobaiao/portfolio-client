@@ -13,6 +13,11 @@ import bitbucket from "../../../assets/images/technologies/bitbucket.webp";
 import nodejs from "../../../assets/images/technologies/nodejs.webp";
 import mongodb from "../../../assets/images/technologies/mongodb.webp";
 import nextjs from "../../../assets/images/technologies/nextjs.webp";
+import jest from "../../../assets/images/technologies/jest.webp";
+import postman from "../../../assets/images/technologies/postman.webp";
+import redux from "../../../assets/images/technologies/redux.webp";
+import sass from "../../../assets/images/technologies/sass.webp";
+import webpack from "../../../assets/images/technologies/webpack.webp.webp";
 import figma from "../../../assets/images/technologies/figma.webp";
 import TechnologiesList from "./TechnologiesList";
 import SectionTitle from "../SectionTitle";
@@ -22,20 +27,25 @@ const solidKnowledgeImages = [
   { src: css, alt: "CSS" },
   { src: bootstrap, alt: "Bootstrap" },
   { src: tailwind, alt: "Tailwind" },
+  { src: sass, alt: "Sass" },
   { src: javascript, alt: "JavaScript" },
   { src: typescript, alt: "TypeScript" },
   { src: react, alt: "React" },
+  { src: redux, alt: "Redux" },
   { src: php, alt: "PHP" },
   { src: laravel, alt: "Laravel" },
-  { src: sqlserver, alt: "SQL Server" },
   { src: git, alt: "GIT" },
   { src: bitbucket, alt: "Jira / BitBucket" },
+  { src: postman, alt: "Postman" },
 ];
 
 const exploreFurtherImages = [
-  { src: nodejs, alt: "Node.js" },
-  { src: mongodb, alt: "MongoDB" },
   { src: nextjs, alt: "Next.js" },
+  { src: nodejs, alt: "Node.js" },
+  { src: sqlserver, alt: "SQL Server" },
+  { src: mongodb, alt: "MongoDB" },
+  { src: jest, alt: "Jest" },
+  { src: webpack, alt: "Webpack" },
   { src: figma, alt: "Figma" },
 ];
 
@@ -46,7 +56,7 @@ function Technologies() {
 
       <div className="flex flex-col items-center">
         <h3 className="font-heading mb-10 text-[2rem] lg:text-[2.3rem] text-center">
-          The ones i've used the most
+          Solid knowledge
         </h3>
 
         <TechnologiesList images={solidKnowledgeImages} />
@@ -54,7 +64,7 @@ function Technologies() {
 
       <div className="mt-14">
         <h3 className="font-heading mb-10 text-[2rem] lg:text-[2.3rem] text-center">
-          The ones i've used but need to explore further
+          Need to explore further
         </h3>
 
         <TechnologiesList images={exploreFurtherImages} />
