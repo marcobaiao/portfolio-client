@@ -5,7 +5,7 @@ function ContactBox() {
   const email = "marcobaiaosilva@gmail.com";
 
   return (
-    <section className="mt-10 bg-white p-3 rounded-md">
+    <section className="mt-5 bg-white p-3 rounded-md">
       <div>
         <a href={`mailto:${email}`} title="Send email">
           <div className="flex my-3 items-center">

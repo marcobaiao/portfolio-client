@@ -7,11 +7,7 @@ function Contact(e) {
       style={{ clipPath: "polygon(50% 15%, 100% 0, 100% 100%, 0 100%, 0 0)" }}
       className="bg-blue-800 pt-32 pb-16 px-10 flex flex-col items-center md:pt-40 md:pb-24"
     >
-      <SectionTitle title="Contact" color="white" />
-
-      <p className="text-center text-white text-lg md:text-xl">
-        If you want to contact me, feel free!
-      </p>
+      <SectionTitle title="Contact me" color="white" />
 
       <ContactBox />
     </section>
