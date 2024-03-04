@@ -8,7 +8,7 @@ import Logo from "../Logo";
 // Array containing navigation items
 const navItems = [
   { id: 3, text: "Projects", to: "/projects" },
-  { id: 4, text: "Blog", to: "/blog" },
+  //{ id: 4, text: "Blog", to: "/blog" },
 ];
 
 const Navbar = () => {

@@ -22,7 +22,7 @@ import NewProject from "./pages/backoffice/NewProject";
 import AdminPostCategories from "./pages/backoffice/AdminPostCategories";
 import Projects from "./pages/frontoffice/Projects";
 import Navbar from "./components/frontoffice/nav/Navbar";
-import Blog from "./pages/frontoffice/Blog";
+//import Blog from "./pages/frontoffice/Blog";
 
 const router = createBrowserRouter([
   {
@@ -38,22 +38,21 @@ const router = createBrowserRouter([
         element: <Project />,
         errorElement: <ErrorPage />,
       },
-      {
+      /*{
         path: "/posts/:postId",
         element: <Post />,
         errorElement: <ErrorPage />,
-      },
-
+      },*/
       {
         path: "/projects",
         element: <Projects />,
         errorElement: <ErrorPage />,
       },
-      {
+      /*{
         path: "/blog",
         element: <Blog />,
         errorElement: <ErrorPage />,
-      },
+      },*/
     ],
   },
   {
