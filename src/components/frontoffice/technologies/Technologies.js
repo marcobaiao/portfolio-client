@@ -34,6 +34,9 @@ const solidKnowledgeImages = [
   { src: redux, alt: "Redux" },
   { src: php, alt: "PHP" },
   { src: laravel, alt: "Laravel" },
+  { src: nodejs, alt: "Node.js" },
+  { src: jest, alt: "Jest" },
+  { src: webpack, alt: "Webpack" },
   { src: git, alt: "GIT" },
   { src: bitbucket, alt: "Jira / BitBucket" },
   { src: postman, alt: "Postman" },
@@ -41,11 +44,8 @@ const solidKnowledgeImages = [
 
 const exploreFurtherImages = [
   { src: nextjs, alt: "Next.js" },
-  { src: nodejs, alt: "Node.js" },
   { src: sqlserver, alt: "SQL Server" },
   { src: mongodb, alt: "MongoDB" },
-  { src: jest, alt: "Jest" },
-  { src: webpack, alt: "Webpack" },
   { src: figma, alt: "Figma" },
 ];
 
