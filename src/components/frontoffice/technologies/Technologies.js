@@ -17,7 +17,7 @@ import jest from "../../../assets/images/technologies/jest.webp";
 import postman from "../../../assets/images/technologies/postman.webp";
 import redux from "../../../assets/images/technologies/redux.webp";
 import sass from "../../../assets/images/technologies/sass.webp";
-import webpack from "../../../assets/images/technologies/webpack.webp.webp";
+import webpack from "../../../assets/images/technologies/webpack.webp";
 import figma from "../../../assets/images/technologies/figma.webp";
 import TechnologiesList from "./TechnologiesList";
 import SectionTitle from "../SectionTitle";
